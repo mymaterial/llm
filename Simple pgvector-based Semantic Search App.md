@@ -47,7 +47,7 @@ mkdir ~/pgvector-app && cd ~/pgvector-app
 
 ## app.py
 
-```
+
 from flask import Flask, request, render_template
 from sentence_transformers import SentenceTransformer
 import psycopg2
@@ -97,11 +97,11 @@ def add():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-```
+
 
 ## templates/index.html
 
-```
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -131,10 +131,10 @@ if __name__ == "__main__":
   </form>
 </body>
 </html>
-```
+
 
 ## Run the App
-```
+
 cd ~/pgvector-app
 source ~/pgvector-env/bin/activate
 python3 app.py
