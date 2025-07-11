@@ -1,0 +1,27 @@
+# 🔪 Kill process using port 5000
+
+## Step 1: Find the process using port 5000
+```bash
+sudo lsof -i :5000
+```
+Look for the `PID` in the output (e.g., 12345).
+
+## Step 2: Kill the process (replace 12345 with actual PID)
+```bash
+sudo kill -9 12345
+```
+
+## Step 3: Verify it's free
+```bash
+sudo lsof -i :5000
+# Should return no output
+```
+
+You can now re-run your Flask app on port 5000:
+```bash
+python3 app.py
+```
+
+Or on another port:
+```bash
+PORT=5001 python3 app.py
