@@ -42,6 +42,20 @@ CREATE TABLE documents (
 \q
 
 ## Project Structure
+-- enable external connectivity
+
+-- flask app for semantic search
+
+# 1. Install venv tools if not already
+sudo apt install -y python3-venv python3-full
+
+# 2. Create and activate a virtual environment
+python3 -m venv ~/pgvector-env
+source ~/pgvector-env/bin/activate
+
+# 3. Now install your packages inside the venv
+pip install --upgrade pip
+pip install flask psycopg2-binary pgvector sentence-transformers
 
 mkdir ~/pgvector-app && cd ~/pgvector-app
 
