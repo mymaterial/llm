@@ -96,3 +96,8 @@ Add user login.
 Highlight the PDF content in responses.
 
 Allow audio or voice queries.
+
+
+create index
+
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops) WITH (M = 16, ef_construction = 64);
