@@ -1,0 +1,44 @@
+
+
+CREATE TABLE documents (
+  id SERIAL PRIMARY KEY,
+  content TEXT,
+  embedding vector(2)
+);
+
+INSERT INTO documents (content, embedding) VALUES
+('Apple is a fruit',       '[1.0, 1.0]'),
+('Banana is a fruit',      '[1.2, 1.1]'),
+('Mango is a fruit',       '[0.9, 1.0]'),
+('Car is a vehicle',       '[5.0, 5.0]'),
+('Truck transports goods', '[5.2, 4.9]'),
+('Orange is citrus',       '[1.1, 1.2]');
+
+SELECT content, embedding, embedding <-> '[1.0, 1.0]'::vector AS distance
+FROM documents
+ORDER BY distance ASC;
+
+a=# SELECT content, embedding, embedding <-> '[1.0, 1.0]'::vector AS distance
+FROM documents
+ORDER BY distance ASC;
+        content         | embedding |      distance
+------------------------+-----------+---------------------
+ Apple is a fruit       | [1,1]     |                   0
+ Mango is a fruit       | [0.9,1]   | 0.10000002216547482
+ Banana is a fruit      | [1.2,1.1] | 0.22360684939598754
+ Orange is citrus       | [1.1,1.2] | 0.22360684939598754
+ Car is a vehicle       | [5,5]     |   5.656854249492381
+ Truck transports goods | [5.2,4.9] |   5.731491819249252
+(6 rows)
+
+a=# SELECT content, embedding, embedding <-> '[1.0, 1.0]'::vector AS distance
+FROM documents
+ORDER BY distance ASC
+LIMIT 1;
+     content      | embedding | distance
+------------------+-----------+----------
+ Apple is a fruit | [1,1]     |        0
+(1 row)
+
+a=#
+
